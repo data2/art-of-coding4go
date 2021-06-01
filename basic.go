@@ -25,4 +25,43 @@ func basic() {
 	var i, j = 10, 20
 	fmt.Println(i * j)
 
+	var start = 0
+	for start < 10 {
+		start++
+		fmt.Println(start)
+	}
+
+	if !isOk {
+		fmt.Println("不ok")
+	}
+
+}
+
+func sum(a, b int) int {
+	return a + b
+}
+
+func swap(a, b string) (string, string) {
+	return b, a
+}
+
+func arr() {
+	var arr1 = [3]int{1, 2, 3}
+	fmt.Println(arr1)
+	fmt.Println(arr1[2])
+
+	arr1 = [3]int{0: 2, 2: 2}
+	fmt.Println(arr1)
+
+}
+
+func point() {
+	var a = 10
+	var point *int = &a
+
+	fmt.Println(fmt.Sprintf("a变量的指针地址为%x", point))
+	fmt.Println(fmt.Sprintf("a变量的指针地址为%x", &a))
+
+	fmt.Println(fmt.Sprintf("a变量值%d", *point))
+
 }
