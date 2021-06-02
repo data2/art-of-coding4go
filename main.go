@@ -5,7 +5,5 @@ import (
 )
 
 func main() {
-
-	basic.Point()
-
+	basic.TestInterface()
 }

@@ -2,6 +2,19 @@ package basic
 
 import "fmt"
 
+type Person struct {
+	name   string
+	age    int
+	height int
+}
+
+type Dog struct {
+}
+
+type Walk interface {
+	walk()
+}
+
 func Test() {
 
 	var url = "你好，%s"
@@ -53,6 +66,50 @@ func Arr() {
 	arr1 = [3]int{0: 2, 2: 2}
 	fmt.Println(arr1)
 
+	slice := make([]int, 10, 12)
+	slice[0] = 1
+	fmt.Println(fmt.Sprintf("切片大小=%d, 切片容量=%d", len(slice), cap(slice)))
+	fmt.Println(slice)
+
+	slice = append(slice, 11, 12)
+	fmt.Println(fmt.Sprintf("切片大小=%d, 切片容量=%d", len(slice), cap(slice)))
+	fmt.Println(slice)
+
+	slice = append(slice, 13)
+	fmt.Println(fmt.Sprintf("切片大小=%d, 切片容量=%d", len(slice), cap(slice)))
+	fmt.Println(slice)
+
+	slice2 := make([]int, 11, 11)
+	copy(slice2, slice)
+	fmt.Println(slice2)
+
+}
+
+func Map() {
+	map1 := make(map[string]string)
+	map1["china"] = "beijing"
+	map1["usa"] = "华盛顿"
+	for country := range map1 {
+		fmt.Println(fmt.Sprintf("国家=%s，首都=%s", country, map1[country]))
+	}
+
+	value, ok := map1["china"]
+	if ok {
+		fmt.Println("china首都" + value)
+	} else {
+		fmt.Println("map不存在china")
+	}
+
+	value1, ok1 := map1["japan"]
+	if ok1 {
+		fmt.Println("japan首都" + value1)
+	} else {
+		fmt.Println("map不存在japan")
+	}
+
+	delete(map1, "china")
+	fmt.Println(map1)
+
 }
 
 func Point() {
@@ -64,4 +121,32 @@ func Point() {
 
 	fmt.Println(fmt.Sprintf("a变量值%d", *point))
 
+}
+
+func TestStruct() {
+	p1 := Person{name: "zhangsan", height: 178}
+	fmt.Println(p1)
+
+	var p2 Person = Person{"李四", 20, 180}
+	fmt.Println(p2.name)
+
+	p2.age += 1
+	p2Point := &p2
+	fmt.Println(p2Point.age)
+
+}
+
+func (person Person) walk() {
+	fmt.Println("人 - 走路")
+}
+
+func (dog Dog) walk() {
+	fmt.Println("狗 - 跑")
+}
+
+func TestInterface() {
+	var p Person = Person{name: "某某人"}
+	var dog Dog = Dog{}
+	p.walk()
+	dog.walk()
 }
