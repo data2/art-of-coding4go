@@ -1,17 +1,11 @@
 package main
 
+import (
+	"github.com/data2/art-of-coding4go/basic"
+)
+
 func main() {
-	//basic()
-	//
-	//fmt.Println("---------------")
-	//
-	//fmt.Println(fmt.Sprintf("1+4=%d",sum(1,4)))
-	//
-	//a, b := swap("a","b")
-	//fmt.Println(b + a)
 
-	//arr()
-
-	point()
+	basic.Point()
 
 }

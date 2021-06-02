@@ -1,8 +1,8 @@
-package main
+package basic
 
 import "fmt"
 
-func basic() {
+func Test() {
 
 	var url = "你好，%s"
 	var realUrl = fmt.Sprintf(url, "go")
@@ -37,15 +37,15 @@ func basic() {
 
 }
 
-func sum(a, b int) int {
+func Sum(a, b int) int {
 	return a + b
 }
 
-func swap(a, b string) (string, string) {
+func Swap(a, b string) (string, string) {
 	return b, a
 }
 
-func arr() {
+func Arr() {
 	var arr1 = [3]int{1, 2, 3}
 	fmt.Println(arr1)
 	fmt.Println(arr1[2])
@@ -55,7 +55,7 @@ func arr() {
 
 }
 
-func point() {
+func Point() {
 	var a = 10
 	var point *int = &a
 
