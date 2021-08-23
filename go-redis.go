@@ -5,7 +5,7 @@ import (
   "github.com/go-redis/redis"
 )
 
-func main(){
+func TestRedis(){
   fmt.Println("golang start conn redis ")
   
   client := redis.NewClient(&redis.Options{
