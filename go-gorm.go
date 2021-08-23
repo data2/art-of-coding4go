@@ -16,20 +16,20 @@ type Product struct {
 }
 
 
-func  connSqlite() (*gorm.DB, error){
+func  ConnSqlite() (*gorm.DB, error){
   return gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
 }
 
-// func  connMysql() (*gorm.DB, error){
+// func  ConnMysql() (*gorm.DB, error){
 //   // 参考 https://github.com/go-sql-driver/mysql#dsn-data-source-name 获取详情
 //   dsn := "user:pass@tcp(127.0.0.1:3306)/dbname?charset=utf8mb4&parseTime=True&loc=Local"
 //   return gorm.Open(mysql.Open(dsn), &gorm.Config{})
 // }
 
 
-func main() {
+func TestGorm() {
 
-  db, err := connSqlite()
+  db, err := ConnSqlite()
   
   if err != nil {
     panic("failed to connect database")
