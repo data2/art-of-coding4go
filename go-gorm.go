@@ -48,11 +48,13 @@ func main() {
   db.Model(&product).Updates(map[string]interface{}{"Price": 3600, "Name": "苹果11-美版-二手"})
   fmt.Println(fmt.Sprintf("第三次更新第二个产品，更新后名称:%s，更新后价格:%d",product.Name, product.Price))
 
-  // Delete - delete product
+  // 删除
   db.Delete(&product, 2)
   fmt.Println("删除第二个产品成功")
 
   db.First(&product, "id = ?", "2") 
   fmt.Println(&product)
+
+
 
 }
