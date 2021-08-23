@@ -14,6 +14,6 @@ func main(){
         DB: 0,
     })
   
-  pong, err := client.Pong().Result()
+  pong, err := client.Ping().Result()
   fmt.Println(pong, err)
 }
