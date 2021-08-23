@@ -5,6 +5,8 @@ import (
   "fmt"
   "gorm.io/gorm"
   "gorm.io/driver/sqlite"
+
+  // "github.com/go-sql-driver/mysql"
 )
 
 type Product struct {
@@ -13,13 +15,27 @@ type Product struct {
   Price uint
 }
 
+
+func  connSqlite() (*gorm.DB, error){
+  return gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
+}
+
+// func  connMysql() (*gorm.DB, error){
+//   // 参考 https://github.com/go-sql-driver/mysql#dsn-data-source-name 获取详情
+//   dsn := "user:pass@tcp(127.0.0.1:3306)/dbname?charset=utf8mb4&parseTime=True&loc=Local"
+//   return gorm.Open(mysql.Open(dsn), &gorm.Config{})
+// }
+
+
 func main() {
-  db, err := gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
+
+  db, err := connSqlite()
+  
   if err != nil {
     panic("failed to connect database")
   }
 
-  // Migrate the schema
+  //GORM支持Migration特性，支持根据Go Struct结构自动生成对应的表结构。
   db.AutoMigrate(&Product{})
 
   // 插入数据
@@ -51,10 +67,6 @@ func main() {
   // 删除
   db.Delete(&product, 2)
   fmt.Println("删除第二个产品成功")
-
-  db.First(&product, "id = ?", "2") 
-  fmt.Println(&product)
-
 
 
 }
