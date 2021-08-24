@@ -61,9 +61,9 @@ a <- data // write to channel a
 
 官方的go编译器限制channel最多能容纳到65535个元素，尽管如此，我们也不应该传递体积过大的元素值，因为channel的数据从进入到流出会涉及到数据拷贝操作。如果元素体积过大，最好的方法还是使用传递指针来取代传递值。
 
-channel类型是可以带有方向的，假设T是一种类型；chan T是双向channel类型，编译器允许对双向channel同时进行发送和接收；chan<- T是只写channel类型，编译器只允许往channel里面发送数据；<-chan T是只读channel类型，编辑器只允许从channel里面接收数据。
+**channel类型是可以带有方向的，假设T是一种类型；chan T是双向channel类型，编译器允许对双向channel同时进行发送和接收；chan<- T是只写channel类型，编译器只允许往channel里面发送数据；<-chan T是只读channel类型，编辑器只允许从channel里面接收数据。**
 
-双向类型的channel，可以被强制转换成只读channel或者是只写channel，但是反过来却不行，只读和只写channel是不可以转换成双向channel的。
+**双向类型的channel，可以被强制转换成只读channel或者是只写channel，但是反过来却不行**，只读和只写channel是不可以转换成双向channel的。
 
-channel里面的value buffer的容量也就是channel的容量。channel的容量为零表示这是一个阻塞型通道，非零表示缓冲型通道[非阻塞型通道]。
+channel里面的value buffer的容量也就是channel的容量。**channel的容量为零表示这是一个阻塞型通道，非零表示缓冲型通道[非阻塞型通道]**。
 
