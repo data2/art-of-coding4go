@@ -41,7 +41,17 @@ go func(){
  fmt.Println("hello")
 }()
 ```
+## 并发模型
 
+Golang的并发模型基于**CSP理论**，Golang并发的口号是：不用通过共享内存来通信，而是通过通信来共享内存。
+
+Golang用来支持并发的元素集：
++ goroutines
++ channels
++ select
++ sync package
+	
+其中goroutines，channels和select 对应于实现CSP理论，即通过通信来共享内存。这几乎能解决Golang并发的90%问题，另外的10%场景需要通过同步原语来解决，即sync包相关的结构。
 
 ## 通道Channel
 
@@ -66,4 +76,9 @@ a <- data // write to channel a
 **双向类型的channel，可以被强制转换成只读channel或者是只写channel，但是反过来却不行**，只读和只写channel是不可以转换成双向channel的。
 
 channel里面的value buffer的容量也就是channel的容量。**channel的容量为零表示这是一个阻塞型通道，非零表示缓冲型通道[非阻塞型通道]**。
+
+## 通道select
+
+Go中的select和channel配合使用，通过select可以监听多个channel的I/O读写事件，当 IO操作发生时，触发相应的动作。
+
 
