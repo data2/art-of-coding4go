@@ -96,4 +96,5 @@ channel里面的value buffer的容量也就是channel的容量。**channel的容
 
 Go中的select和channel配合使用，通过select可以监听多个channel的I/O读写事件，当 IO操作发生时，触发相应的动作。
 
-
+**通道channel是将goroutine的粘合剂，select语句是通道channel的粘合剂
+**
