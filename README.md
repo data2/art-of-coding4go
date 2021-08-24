@@ -41,3 +41,21 @@ go func(){
  fmt.Println("hello")
 }()
 ```
+
+
+## 通道Channel
+
+**“不要通过共享内存来通信，而应该通过通信来共享内存” 这是一句风靡golang社区的经典语**
+
+```go
+a := make(chan int) 
+
+data := <- a // read from channel a  
+a <- data // write to channel a
+
+```
+
+**发送和接收默认是阻塞的**
+一个通道发送和接收数据，默认是阻塞的。当一个数据被发送到通道时，在发送语句中被阻塞，直到另一个Goroutine从该通道读取数据。相对地，当从通道读取数据时，读取被阻塞，直到一个Goroutine将数据写入该通道。
+
+
