@@ -5,7 +5,6 @@ import (
     "sync"
 )
 
-
 // go run go-sync-WaitGroup.go  go-http.go
 func main(){
     fmt.Println("10个线程开始执行")
