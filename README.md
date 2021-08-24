@@ -26,6 +26,8 @@ Go遵循称为**fork-join模型的并发模型**.fork这个词指的是在程序
 
 ![image](https://user-images.githubusercontent.com/13504729/130546277-13c063d0-fe4b-4892-9f64-c8f3363e7d06.png)
 
+**Goroutine是实际并发执行的实体**，它底层是使用**协程**(coroutine)实现并发，coroutine是一种运行在**用户态的用户线程**，类似于 greenthread
+
 **go关键字为Go程序实现了fork**，fork的执行者是goroutine
 
 ``` go
