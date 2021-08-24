@@ -94,7 +94,32 @@ channel里面的value buffer的容量也就是channel的容量。**channel的容
 
 # select
 
-Go中的select和channel配合使用，通过select可以监听多个channel的I/O读写事件，当 IO操作发生时，触发相应的动作。
+Go中的select和channel配合使用，通过select可以监听多个channel的I/O读写事件，当IO操作发生时，触发相应的动作。
 
-**通道channel是将goroutine的粘合剂，select语句是通道channel的粘合剂
-**
++ 若一个通道发生读写，则去执行对应逻辑  
++ 若多个通道发生读写，则随机选择一个去执行
++ 若多个通道都没有发生读写
+	+ 有default分支：则走default分支
+	+ 没有：则阻塞
+	
+
+
+**通道channel是将goroutine的粘合剂，select语句是通道channel的粘合剂**
+
+
+![image](https://user-images.githubusercontent.com/13504729/130595261-76d0f65c-62f9-4286-b293-d2c89dbd84e0.png)
+
+代码
+
+```
+var c1, c2 <-chan interface{}
+var c3 chan<- interface{}
+select {
+case <-c1:
+	// Do something
+case <-c2:
+	// Do something
+case c3 <- struct{}{}:
+	// Do something
+}
+```
