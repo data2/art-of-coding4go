@@ -123,3 +123,72 @@ case c3 <- struct{}{}:
 	// Do something
 }
 ```
+
+# 特性
+
+## 并发编程，协程goroutine
+## 垃圾回收
+## 网络编程，grpc
+
+
+
+## 内置常用数据类型,map slice
+
+内置了一个其他静态语言通常用库方式来支持的**字典类型（map）**，理由很简单：既然绝大多数开发者都需要用到这个类型，为什么还非要每个人都写一行import语句来包含一个库？
+
+Go语言还新增了一个数据类型：**数组切片（Slice）**。我们可以将数组切片看作是一种**可动态增长的数组**，其功能与C++标准库中的vector类似，但有效地消除了反复写以下几行代码的工作量：
+
+```
+#include <vector>
+#include<map>
+#include<algorithm>
+using namespace std;
+```
+
+## 函数多返回值
+
+Go语言的多返回值功能让开发者既不用再只为了返回多个值而专门定义一个数据结构
+
+## 异常处理 defer
+
+Golang 没有结构化异常，使用 panic 抛出错误，recover 捕获错误。
+异常的使用场景简单描述：Go中可以抛出一个panic的异常，然后在defer中通过recover捕获这个异常，然后正常处理。
+
+```
+// 举例除数为0
+func main() {
+    var a1 int = 2
+    var b1 int = 0
+    // 犹豫除数为0 报错终止
+    res1 := divisionIntRecover(a1, b1)
+    fmt.Println("res1",res1)
+}
+
+func divisionIntRecover(a int, b int) (ret int) {
+// 先注释掉 defer 进程终止抛出异常
+    //defer func() {
+    //    if err := recover(); err != nil {
+    //        // 打印异常，关闭资源，退出此函数
+    //        fmt.Println(err)
+    //        ret = -3
+    //    }
+    //}()
+
+    return a / b
+}
+```
+
+## 支持匿名函数
+
+```
+f := func(x,y,int) int{
+  return x+y
+}
+```
+
+## 简单的类型，不支持继承和重载
+
+Go语言的类型定义非常接近C语言中的结构（struct），甚至直接沿用了struct关键字。为了保持简洁，Go语言没有直接沿袭C++和Java的传统去设计一个超级复杂的类型系统，**不支持继承和重载**，而只是支持最基本的**类型组合功能**。虽然看起来过于简洁，但Go语言依然能够实现C++和Java使用复杂的类型系统才能实现的功能。
+
+
+
