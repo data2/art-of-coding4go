@@ -130,7 +130,10 @@ case c3 <- struct{}{}:
 ## 垃圾回收
 ## 网络编程，grpc
 
-
+由于golang诞生在互联网时代，因此它天生具备了去中心化、分布式等特性，具体表现之一就是提供了丰富便捷的网络编程接口，
+* socket用net.Dial(基于tcp/udp，封装了传统的connect、listen、accept等接口)
+* http用http.Get/Post()
+* rpc用client.Call('class_name.method_name', args, &reply)
 
 ## 内置常用数据类型,map slice
 
